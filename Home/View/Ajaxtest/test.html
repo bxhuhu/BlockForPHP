@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajaxtest</title>
+    <!--<script type="text/javascript">-->
+
+    <!--//    </script>-->
+    <script src="__PUBLIC__/home/js/jQuery3.0.min.js"></script>
+    <script>
+        //        function loadXMLDoc() {
+        //            var xmlhttp;
+        //
+        //            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        //                xmlhttp = new XMLHttpRequest();
+        //            }
+        //            else {// code for IE6, IE5
+        //                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        //            }
+        //            xmlhttp.onreadystatechange = function () {
+        //                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        //                    document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+        //                }
+        //            }
+        //            xmlhttp.open("GET", "http://127.0.0.1:8888/myblogs/index.php/home/AjaxTest/resultData", true);
+        //            xmlhttp.send();
+
+        function loadXMLDoc() {
+            $.ajax({
+                    type: 'get',
+                    url: 'resultData',
+                    async: false,
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (Data, textStatues, jqXHR) {
+                        callbackData = Data;
+                        console.log(jqXHR);
+                        document.getElementById("myDiv").innerHTML = jqXHR.responseText;
+
+                    }
+                }
+            )
+        }
+    </script>
+
+</head>
+<body>
+<h2>AJAX</h2>
+<button type="button" onclick="loadXMLDoc()">请求数据</button>
+<div id="myDiv"></div>
+</body>
+</html>

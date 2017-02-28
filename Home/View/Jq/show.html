@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>显示JQ</title>
+    <script src="__PUBLIC__/home/js/jQuery3.0.min.js"></script>
+    `
+    <script>
+        $(function () {
+            $("button").click(function () {
+                $.get("http://localhost:8888/myblogs/index.php/home/AjaxTest/resultData", function (data, status) {
+                    var parse = JSON.parse(data);
+                    console.log(parse.a);
+                })
+            })
+        })
+    </script>
+    <style>
+        .important {
+            font-weight: bold;
+            font-size: xx-large;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<div style="height: 100%;width: 100%;padding: 10px; margin: 20px; border:5px solid red;">这里是盒子模型</div>
+<button>点击查看盒子模型的数据</button>
+</body>
+</html>
