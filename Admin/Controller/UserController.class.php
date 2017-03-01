@@ -8,9 +8,7 @@ class UserController extends Controller
     public function user_list()
     {
 
-        $model = D('User');
-        $data = $model->select();
-        $this->assign("userList", $data);
+        $this->assign("userList", D('user')->getUserInfo());
         $this->display();
     }
 

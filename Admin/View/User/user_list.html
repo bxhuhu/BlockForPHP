@@ -125,173 +125,45 @@
                     <thead>
                     <tr>
                         <th class="span4 sortable">
-                            Name
+                            姓名
                         </th>
                         <th class="span3 sortable">
-                            <span class="line"></span>Signed up
+                            <span class="line"></span>注册
                         </th>
                         <th class="span2 sortable">
-                            <span class="line"></span>Total spent
+                            <span class="line"></span>用户类型
                         </th>
                         <th class="span3 sortable align-right">
-                            <span class="line"></span>Email
+                            <span class="line"></span>邮箱
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- row -->
-                    <tr class="first">
-                        <td>
-                            <img src="__PUBLIC__/admin/img/contact-img.png" class="img-circle avatar hidden-phone"/>
-                            <a href="user_profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Mar 13, 2012
-                        </td>
-                        <td>
-                            $ 4,500.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                            <img src="__PUBLIC__/admin/img/contact-img2.png" class="img-circle avatar hidden-phone"/>
-                            <a href="user_profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Jun 03, 2012
-                        </td>
-                        <td>
-                            $ 549.99
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                            <img src="__PUBLIC__/admin/img/contact-img.png" class="img-circle avatar hidden-phone"/>
-                            <a href="user_profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Mar 01, 2014
-                        </td>
-                        <td>
-                            $ 30.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                            <img src="__PUBLIC__/admin/img/contact-img2.png" class="img-circle avatar hidden-phone"/>
-                            <a href="user_profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Jan 28, 2012
-                        </td>
-                        <td>
-                            $ 1,320.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                            <img src="__PUBLIC__/admin/img/contact-img.png" class="img-circle avatar hidden-phone"/>
-                            <a href="user_profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            May 16, 2012
-                        </td>
-                        <td>
-                            $ 89.99
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                            <img src="__PUBLIC__/admin/img/contact-img2.png" class="img-circle avatar hidden-phone"/>
-                            <a href="user_profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Sep 06, 2012
-                        </td>
-                        <td>
-                            $ 344.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                            <img src="__PUBLIC__/admin/img/contact-img.png" class="img-circle avatar hidden-phone"/>
-                            <a href="user_profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Jul 13, 2012
-                        </td>
-                        <td>
-                            $ 800.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                            <img src="__PUBLIC__/admin/img/contact-img2.png" class="img-circle avatar hidden-phone"/>
-                            <a href="user_profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Feb 13, 2014
-                        </td>
-                        <td>
-                            $ 250.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
-                    <!-- row -->
-                    <tr>
-                        <td>
-                            <img src="__PUBLIC__/admin/img/contact-img.png" class="img-circle avatar hidden-phone"/>
-                            <a href="user_profile.html" class="name">Alejandra Galvan Castillo</a>
-                            <span class="subtext">Graphic Design</span>
-                        </td>
-                        <td>
-                            Feb 27, 2014
-                        </td>
-                        <td>
-                            $ 1,300.00
-                        </td>
-                        <td class="align-right">
-                            <a href="#">alejandra@canvas.com</a>
-                        </td>
-                    </tr>
+                    <foreach name="userList" item="user">
+                        <tr class="first">
+                            <td>
+                                <!--头像-->
+                                <img src="__PUBLIC__/admin/img/contact-img.png" class="img-circle avatar hidden-phone"/>
+                                <a href="user_profile.html" class="name">{$user['user_name']}</a>
+                                <!--数据库id-->
+                                <span class="subtext">id:{$user['id']}</span>
+                            </td>
+                            <!--注册时间-->
+                            <td>
+                                {$user['create_date']}
+                            </td>
+                            <!--用户类型-->
+                            <td>
+                                {$user['permission']}
+                            </td>
+                            <!--邮箱-->
+                            <td class="align-right">
+                                <a href="#"> {$user['email']}
+                                </a>
+                            </td>
+                        </tr>
+                    </foreach>
                     </tbody>
                 </table>
             </div>
