@@ -161,44 +161,27 @@
 
 <script>
     $(function () {
-        if (getIndexOfUrl("user_list")) {
-            $("#user_list").addClass("active");
-        } else if (getIndexOfUrl("new_user")) {
-            $("#new_user").addClass("active");
-        } else if (getIndexOfUrl("user_profile")) {
-            $("#user_profile").addClass("active");
-        }
+            var user_list = "#user_list";
+            var new_user = "#new_user";
+            var user_profile = "#user_profile";
+            var baidu = "#baidu";
 
-
-        function getIndexOfUrl(key) {
+            var arrays = new Array(user_list, new_user, user_profile, baidu);
             var currentUrl = this.location.href;
-            var user_list = "user_list";
-            var new_user = "new_user";
-            var user_profile = "user_profile";
-            if (key == user_list) {
-                if (currentUrl.indexOf(user_list) != -1) {
-                    return true;
+            for (i = 0; i < arrays.length; i++) {
+                var key = arrays[i].split("#")[1];
+                if (currentUrl.indexOf(key) != -1) {
+                    $(arrays[i]).addClass("active");
+                    $(arrays[i]).parents().siblings("div").addClass("pointer");
                 }
             }
-            if (key == new_user) {
-                if (currentUrl.indexOf(new_user) != -1) {
-                    return true;
-                }
-            }
-            if (key == user_profile) {
-                if (currentUrl.indexOf(user_profile) != -1) {
-                    return true;
-                }
-            }
-
-            return false;
         }
-    })
+    )
 </script>
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
         <li class="active">
-            <div class="pointer">
+            <div>
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
             </div>
