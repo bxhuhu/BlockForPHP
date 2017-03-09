@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cropper</title>
+    <link href="__PUBLIC__/Admin/css/cropper.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 640px;
+            margin: 20px auto;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <img id="image" src="__PUBLIC__/admin/img/picture.jpg" alt="Picture">
+    </div>
+    <button id="button">查看参数</button>
+</div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="__PUBLIC__/Admin/js/cropper.js"></script>
+<script>
+
+    $(function () {
+        var $x;
+        var $y;
+        var $width;
+        var $height;
+        var $rotate;
+        var $scaleX = 1;
+        var $scaleY = 1;
+
+        var $button = $('#button');
+        var $image = $('#image');
+        var minAspectRatio = 0.5;
+        var maxAspectRatio = 1.5;
+        var croppable = false;
+        $image.cropper({
+            movable: false,
+            zoomable: false,
+            rotatable: false,
+            scalable: false,
+            ready: function () {
+                croppable = true;
+                var containerData = $image.cropper('getContainerData');
+                var cropBoxData = $image.cropper('getCropBoxData');
+                var aspectRatio = cropBoxData.width / cropBoxData.height;
+                var newCropBoxWidth;
+
+                if (aspectRatio < minAspectRatio || aspectRatio > maxAspectRatio) {
+                    newCropBoxWidth = cropBoxData.height * ((minAspectRatio + maxAspectRatio) / 2);
+
+                    $image.cropper('setCropBoxData', {
+                        left: (containerData.width - newCropBoxWidth) / 2,
+                        width: newCropBoxWidth
+                    });
+                }
+            },
+            crop: function (e) {
+                // Output the result data for cropping image.
+                $x = e.x;
+                $y = e.y;
+                $width = e.width;
+                $height = e.height;
+                $rotate = e.rotate;
+                $scaleX = e.scaleX;
+                $scaleY = e.scaleY;
+            },
+            cropmove: function () {
+                var cropBoxData = $image.cropper('getCropBoxData');
+                var aspectRatio = cropBoxData.width / cropBoxData.height;
+
+                if (aspectRatio < minAspectRatio) {
+                    $image.cropper('setCropBoxData', {
+                        width: cropBoxData.height * minAspectRatio
+                    });
+                } else if (aspectRatio > maxAspectRatio) {
+                    $image.cropper('setCropBoxData', {
+                        width: cropBoxData.height * maxAspectRatio
+                    });
+                }
+            }
+        });
+        $button.on('click', function () {
+            console.log($x);
+            console.log($y);
+            console.log($width);
+            console.log($height);
+            console.log($rotate);
+            console.log($scaleX);
+            console.log($scaleY);
+            // Crop
+
+        });
+    });
+    //修改图片操作
+    //    $image.cropper('replace', '../docs/images/picture-2.jpg');
+
+</script>
+</body>
+</html>

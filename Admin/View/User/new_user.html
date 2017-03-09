@@ -148,11 +148,10 @@
 <script src="__PUBLIC__/admin/js/bootstrap.min.js"></script>
 <script src="__PUBLIC__/admin/js/theme.js"></script>
 
-<script type="text/javascript">
+<script>
 
     $(function () {
         $("#form").bind("submit", function () {
-
             $qrmima = $("#qrmima").val();
             $mima = $("#mima").val();
             if ($qrmima == $mima) {
@@ -163,7 +162,6 @@
         })
     })
     $(function () {
-
         // toggle form between inline and normal inputs
         var $buttons = $(".toggle-inputs button");
         var $form = $("form.new_user_form");
@@ -172,7 +170,6 @@
             var mode = $(this).data("input");
             $buttons.removeClass("active");
             $(this).addClass("active");
-
             if (mode === "inline") {
                 $form.addClass("inline-input");
             } else {

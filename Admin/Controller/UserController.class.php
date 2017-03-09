@@ -41,6 +41,11 @@ class UserController extends Controller
     }
 
 
+    public function test_page()
+    {
+        $this->display();
+    }
+
     //----------------响应的请求----------------
 
     //----------------ajax----------------
@@ -56,6 +61,11 @@ class UserController extends Controller
                 $this->ajaxReturn(true);
             }
         }
+    }
+
+    public function up_head_img()
+    {
+        $this->display();
     }
 
 
