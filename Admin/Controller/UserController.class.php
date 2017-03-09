@@ -47,10 +47,15 @@ class UserController extends Controller
     public function isNameExistes()
     {
         if (IS_POST) {
-
+            $name = I("name");
+            $user = D('user')->where("user_name = '" . $name . "'")->select();
+            $size = sizeof($user);
+            if ($size > 0) {
+                $this->ajaxReturn(false);
+            } else {
+                $this->ajaxReturn(true);
+            }
         }
-        $data = false;
-        $this->ajaxReturn($data);
     }
 
 

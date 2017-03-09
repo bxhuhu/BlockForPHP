@@ -29,8 +29,6 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-
 </head>
 <body>
 
@@ -39,7 +37,6 @@
 
 <!-- main container -->
 <div class="content" ng-controller="myCtrl">
-
     <!-- settings changer -->
     <div class="skins-nav">
         <a href="#" class="skin first_nav selected">
@@ -63,7 +60,7 @@
                         <form class="new_user_form inline-input" action="{:U(user/new_user)}" method="post"
                               id="form">
                             <div class="span12 field-box">
-                                <label>昵称:</label>
+                                <label>昵称:</label><a id="a_tips"></a>
                                 <input class="span9" type="text" name="nicheng" id="nicheng"/>
                             </div>
                             <div class="span12 field-box">
@@ -156,28 +153,13 @@
     $(function () {
         $("#form").bind("submit", function () {
 
-            $name = $("#nicheng").val();
-
-            $.post("{:U('user/isNameExistes')}",
-                {
-                    name: $name
-                },
-                function (data, status) {
-                    if (data) {
-                        alert("验证通过");
-                    } else {
-                        alert("数据验证失败");
-                    }
-                });
+            $qrmima = $("#qrmima").val();
+            $mima = $("#mima").val();
+            if ($qrmima == $mima) {
+                return true;
+            }
+            alert("两次密码不一致");
             return false;
-
-//            $qrmima = $("#qrmima").val();
-//            $mima = $("#mima").val();
-//            if ($qrmima == $mima) {
-//                return true;
-//            }
-//            alert("两次密码不一致");
-//            return false;
         })
     })
     $(function () {
@@ -213,7 +195,25 @@
         });
     })
     /*-------------ajax--------*/
-
+    /*判断数据库是否存在这个用户*/
+    $(function () {
+        $("#nicheng").blur(function () {
+            $name = $("#nicheng").val();
+            $.post("{:U('user/isNameExistes')}",
+                {
+                    name: $name
+                },
+                function (data, status) {
+                    if (data) {
+                        $("#a_tips").text("用户名通过");
+                        $("#a_tips").css("color", "green");
+                    } else {
+                        $("#a_tips").text("用户名已经存在");
+                        $("#a_tips").css("color", "red");
+                    }
+                });
+        });
+    })
 </script>
 
 </body>
