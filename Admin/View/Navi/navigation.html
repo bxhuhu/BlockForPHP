@@ -163,17 +163,25 @@
 
 <script>
     $(function () {
+            //用户
             var user_list = "#user_list";
             var new_user = "#new_user";
             var user_profile = "#user_profile";
+            //文章
+            var essay_list = "#essay_list";
+            var essay_new = "#essay_new";
+            var essay_profile = "#essay_profile";
 
-            var arrays = new Array(user_list, new_user, user_profile);
+            var arrays = new Array(user_list, new_user, user_profile,
+                essay_list, essay_new, essay_profile
+            );
             var currentUrl = this.location.href;
             for (i = 0; i < arrays.length; i++) {
                 var key = arrays[i].split("#")[1];
                 if (currentUrl.indexOf(key) != -1) {
-                    $(arrays[i]).addClass("active");
+                    $(arrays[i]).attr("class", "active submenu");
                     $(arrays[i]).parents().siblings("div").addClass("pointer");
+                    $(arrays[i]).parents().parent().addClass("active");
                 }
             }
         }
@@ -181,7 +189,7 @@
 </script>
 <div id="sidebar-nav">
     <ul id="dashboard-menu">
-        <li class="active">
+        <li>
             <div>
                 <div class="arrow"></div>
                 <div class="arrow_border"></div>
@@ -191,14 +199,30 @@
                 <span>用户组</span>
                 <i class="icon-chevron-down"></i>
             </a>
-            <ul class="active submenu">
+            <!--active submenu-->
+            <ul class="submenu">
                 <li><a id="user_list" href="{:U('user/user_list')}">用户列表</a></li>
                 <li><a id="new_user" href="{:U('user/new_user')}">添加用户</a></li>
                 <li><a id="user_profile" href="{:U('user/user_profile')}">用户详情</a></li>
             </ul>
         </li>
+        <li>
+            <div>
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-edit"></i>
+                <span>文章管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a id="essay_list" href="{:U('essay/essay_list')}">文章列表</a></li>
+                <li><a id="essay_new" href="{:U('essay/essay_new')}">新文章</a></li>
+                <li><a id="essay_profile" href="{:U('essay/essay_profile')}">文章预览</a></li>
+            </ul>
+        </li>
     </ul>
-
 </div>
 <!-- end sidebar -->
 
