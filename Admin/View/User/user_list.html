@@ -144,8 +144,9 @@
                         <tr class="first">
                             <td>
                                 <!--头像-->
-                                <img src="__PUBLIC__/admin/img/contact-img.png" class="img-circle avatar hidden-phone"/>
-                                <a href="user_profile.html" class="name">{$user['user_name']}</a>
+                                <img src="/myblogs/uploads{$user['head_img']}" class="img-circle avatar hidden-phone"/>
+                                <a href="{:U('user/user_profile',array('id'=>$user['id']))}"
+                                   class="name">{$user['user_name']}</a>
                                 <!--数据库id-->
                                 <span class="subtext">id:{$user['id']}</span>
                             </td>

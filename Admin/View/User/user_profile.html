@@ -53,9 +53,12 @@
             <!-- header -->
             <div class="row-fluid header">
                 <div class="span8">
-                    <img src="__PUBLIC__/admin/img/contact-profile.png" class="avatar img-circle"/>
-                    <h3 class="name">Alejandra Galván Castillo</h3>
-                    <span class="area">Graphic Designer</span>
+                    <img src="/myblogs/uploads{$data['head_img']}" style="height: 70px;width: 70px;"
+                         class="avatar img-circle"/>
+                    <!--用户名-->
+                    <h3 class="name">{$data['user_name']}</h3>
+                    <!--id-->
+                    <span class="area">id:{$data['id']}</span>
                 </div>
                 <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="Delete user"
                    data-placement="top">
