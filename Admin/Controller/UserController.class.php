@@ -88,6 +88,20 @@ class UserController extends Controller
 
     //----------------响应的请求----------------
 
+
+    public function delete()
+    {
+        $id = I('id');
+        $model = D('user');
+        $result = $model->where('id=' . $id)->delete();
+        if ($result) {
+            redirect(U('user/user_list'), 1, '删除成功,页面跳转中...');
+        } else {
+            $this->error('数据删除失败');
+        }
+
+    }
+
     //----------------ajax----------------
     public function isNameExistes()
     {

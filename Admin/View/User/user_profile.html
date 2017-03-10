@@ -60,7 +60,9 @@
                     <!--id-->
                     <span class="area">id:{$data['id']}</span>
                 </div>
-                <a class="btn-flat icon pull-right delete-user" data-toggle="tooltip" title="Delete user"
+                <!--删除按钮-->
+                <a href="{:U('user/delete',array('id'=>$data['id']))}" class="btn-flat icon pull-right delete-user"
+                   data-toggle="tooltip" title="Delete user"
                    data-placement="top">
                     <i class="icon-trash"></i>
                 </a>
