@@ -96,33 +96,33 @@
                             <span class="line"></span>文章类型
                         </th>
                         <th class="span3 sortable align-right">
-                            <span class="line"></span>邮箱
+                            <span class="line"></span>留言数
                         </th>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- row -->
-                    <foreach name="userList" item="user">
+                    <foreach name="essayList" item="essay">
                         <tr class="first">
                             <td>
-                                <!--头像-->
-                                <img src="/myblogs/uploads{$user['head_img']}" class="img-circle avatar hidden-phone"/>
-                                <a href="{:U('user/user_profile',array('id'=>$user['id']))}"
-                                   class="name">{$user['user_name']}</a>
-                                <!--数据库id-->
-                                <span class="subtext">id:{$user['id']}</span>
+                                <!--图片-->
+                                <img src="/myblogs/uploads{$essay['img']}" class="img-circle avatar hidden-phone"/>
+                                <a href="{:U('essay/essay_profile',array('id'=>$essay['id']))}"
+                                   class="name">{$essay['title']}</a>
+                                <!--用户名-->
+                                <span class="subtext">用户名:{$essay['user_name']}</span>
                             </td>
-                            <!--注册时间-->
+                            <!--提交时间-->
                             <td>
-                                {$user['create_date']}
+                                {$essay['date']}
                             </td>
-                            <!--用户类型-->
+                            <!--文章类型-->
                             <td>
-                                {$user['permission']}
+                                {$essay['classify']}
                             </td>
-                            <!--邮箱-->
+                            <!--评论数-->
                             <td class="align-right">
-                                <a href="#"> {$user['email']}
+                                <a href="#"> {$essay['messageCount']}
                                 </a>
                             </td>
                         </tr>
