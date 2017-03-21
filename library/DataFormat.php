@@ -10,19 +10,29 @@ class DataFormat
 {
     /**数据调用成功的封装
      * @param $data
+     * @param null $message
      * @return array
      */
-    public static function successFormat($data)
+    public static function successFormat($message = null, $data = null)
     {
-        return array("code" => 0, "message" => "成功", "data" => $data);
+        if ($message==null)
+            $message = '成功';
+        if ($data==null)
+            $data = array();
+        return array("code" => 0, "message" => $message, "data" => $data);
     }
 
     /**失败数据的封装
+     * @param null $message
      * @param $data
      * @return array
      */
-    public static function failFormat($data)
+    public static function failFormat($message = null, $data = null)
     {
-        return array("code" => 1, "message" => "失败", "data" => $data);
+        if ($message==null)
+            $message = '失败';
+        if ($data==null)
+            $data = array();
+        return array("code" => 1, "message" => $message, "data" => $data);
     }
 }
