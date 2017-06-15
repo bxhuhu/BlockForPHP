@@ -15,11 +15,11 @@ class LoginController extends RestController
             $username = I('username');
             $password = I('password');
             $model = D("admin/user");
-            $data = $model->where("user_name='" . $username . "'and password='" . $password . "'")->select();
+            $data = $model->where("user_name='" . $username . "'and password='" . $password . "'")->find();
             if (sizeof($data) > 0) {
                 $this->response(\DataFormat::successFormat(null, $data), 'json');
             } else {
-                $this->response(\DataFormat::failFormat(), 'json');
+                $this->response(\DataFormat::failFormat("用户名或密码错误"), 'json');
             }
         }
     }
@@ -48,12 +48,15 @@ class LoginController extends RestController
                     $model->head_img = $path;
                     $model->create_date = date("Y-m-d h:m:s");
                     $model->add();
-                    $data = $model->where("user_name='" . $username . "'")->select();
+                    $data = $model->where("user_name='" . $username . "'")->find();
                     $this->response(\DataFormat::successFormat("添加用户成功", $data), 'json');
                 }
             }
 
         }
     }
+
+
+
 
 }
