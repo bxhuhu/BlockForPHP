@@ -172,9 +172,13 @@
             var essay_new = "#essay_new";
             var essay_profile = "#essay_profile";
 
+            //文章
+            var video_list = "#video_list";
+            var video_new = "#video_new";
+            var video_profile = "#video_profile";
+
             var arrays = new Array(user_list, new_user, user_profile,
-                essay_list, essay_new, essay_profile
-            );
+                essay_list, essay_new, essay_profile, video_list, video_new, video_profile);
             var currentUrl = this.location.href;
             for (i = 0; i < arrays.length; i++) {
                 var key = arrays[i].split("#")[1];
@@ -220,6 +224,22 @@
                 <li><a id="essay_list" href="{:U('essay/essay_list')}">文章列表</a></li>
                 <li><a id="essay_new" href="{:U('essay/essay_new')}">新文章</a></li>
                 <li><a id="essay_profile" href="{:U('essay/essay_profile')}">文章预览</a></li>
+            </ul>
+        </li>
+        <li>
+            <div>
+                <div class="arrow"></div>
+                <div class="arrow_border"></div>
+            </div>
+            <a class="dropdown-toggle" href="#">
+                <i class="icon-facetime-video"></i>
+                <span>视频管理</span>
+                <i class="icon-chevron-down"></i>
+            </a>
+            <ul class="submenu">
+                <li><a id="video_list" href="{:U('video/video_list')}">视频列表</a></li>
+                <li><a id="video_new" href="{:U('video/video_new')}">新视频</a></li>
+                <li><a id="video_profile" href="{:U('video/video_profile')}">视频预览</a></li>
             </ul>
         </li>
     </ul>
