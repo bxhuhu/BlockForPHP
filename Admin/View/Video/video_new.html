@@ -61,17 +61,18 @@
 
                     <div class="container">
                         <form enctype="multipart/form-data" class="new_user_form inline-input"
-                              action="{:U(video/new_video)}" method="post"
+                              action="{:U(video/video_new)}" method="post"
                               id="form">
-                            <!--<div class="span12 field-box">-->
-                            <!--<label>添加视频封面图:</label>-->
-                            <!--<div class="ui-select span5"-->
-                            <!--style="height: 100px;width: 100px; background: #0098ff;"><img id="hed_img"></div>-->
-                            <!--<input type="file" name="photo" id="videoImg">-->
-                            <!--</div>-->
+                            <div class="span12 field-box">
+                                <label>添加视频封面图:</label>
+                                <div class="ui-select span5"
+                                     style="height: 100px;width: 100px; background: #0098ff;"><img id="hed_img"></div>
+                                <input type="file" name="photo" id="videoFile">
+                            </div>
+
                             <div class="span12 field-box">
                                 <label>添加视频文件:</label>
-                                <input type="file" name="file" id="file">
+                                <input type="file" name="file" id="video">
                             </div>
                             <div class="span12 field-box">
                                 <label>视频标题:</label><a id="a_tips"></a>
@@ -146,7 +147,8 @@
             return url;
         }
 
-        $("#imgFile").change(function () {
+
+        $("#videoFile").change(function () {
             $("#hed_img").attr("src", createFileObj(this.files[0]));
         });
         $("#form").bind("submit", function () {

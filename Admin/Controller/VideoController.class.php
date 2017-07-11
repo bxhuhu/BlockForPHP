@@ -12,23 +12,6 @@ class VideoController extends Controller
         $this->display();
     }
 
-    public function video_new()
-    {
-        if (IS_POST) {
-            $file = new FileController();
-            $path = $file->upFileAndVideo();
-            if ($path == "error") {
-                $this->error("上传视频出错");
-            } else {
-               $this->success("上传视频成功");
-            }
-            exit;
-        }
-        $list = D('permission')->getList();
-        $this->assign("perList", $list);
-        $this->display();
-    }
-
 
     public function video_profile()
     {
@@ -83,6 +66,27 @@ class VideoController extends Controller
 
     public function up_head_img()
     {
+        $this->display();
+    }
+
+    public function video_new()
+    {
+        if (IS_POST) {
+            $file = new FileController();
+            $path = $file->saveBigFile();
+            if (sizeof($path) > 0) {
+                $model = D('video');
+                $model->url = $path['videoPath'];
+                $model->title = I('title');
+                $model->create_data = date("Y-m-d h:m:s");
+                $model->img = $path['imgPath'];
+                $model->add();
+                $this->success('添加视频成功');
+            } else {
+                $this->error('添加视频失败');
+            }
+            exit;
+        }
         $this->display();
     }
 
