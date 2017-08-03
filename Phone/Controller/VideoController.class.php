@@ -90,6 +90,7 @@ class VideoController extends RestController
             $video_id = I('video_id');
             $data = $cacheModel->where('video_id=' . $video_id)->select();
             $size = sizeof($data);
+
             if ($size < 1) {
                 $this->response(\DataFormat::failFormat("没有缓存文件"), json);
                 exit;
@@ -114,9 +115,16 @@ class VideoController extends RestController
             $videoModel = D('video');
             $videoModel->url = $splitStr;
             $videoModel->where('id=' . $video_id)->save();
-            $data = $videoModel->where('id=' . $video_id)->select();
             shell_exec($shellStr);
+            for ($i = 0; $i < $size; $i++) {
+                $cacheData = $data[$i];
+                $cache_path = 'uploads' . $cacheData['cache_path'];
+                $shellStr = 'rm ' . $cache_path;
+                shell_exec($shellStr);
+            }
+            //删除缓存数据库中的对应id数据
             $cacheModel->where('video_id=' . $video_id)->delete();
+
             $this->response(\DataFormat::successFormat('合成视频id为<' . $video_id . '>操作完成', null), 'json');
         }
     }
